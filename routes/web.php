@@ -20,4 +20,5 @@ Route::group(['prefix' => 'admin'], function()
 	Route::get('/home', 'Admin\DashboardController@index')->name('home');
 	Route::get('/location', 'Admin\LocationController@index')->name('location');
 	Route::get('/load-location-data', 'Admin\LocationController@loadLocationData')->name('load-location-data');
+	Route::resource('/location', 'Admin\LocationController');
 });
