@@ -52,16 +52,17 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         responsive: true,
-        order : [[ 1, "desc" ]],
+        order : [[ 6, "desc" ]],
         ajax: '{!! route('load-location-data') !!}',
         columns: [
-            {data: 'branch_name', name: 'a.branch_name'},
-            {data: 'address_line_1', name: 'a.address_line_1'},
-            {data: 'city', name: 'a.city'},
-            {data: 'postal_code', name: 'a.postal_code'},
-            {data: 'state_name', name: 'b.state_name'},
-            {data: 'status', name: 'a.status'},
+            {data: 'branch_name', name: 'branch_name'},
+            {data: 'address_line_1', name: 'address_line_1'},
+            {data: 'city', name: 'city'},
+            {data: 'postal_code', name: 'postal_code'},
+            {data: 'state_name', name: 'state_name'},
+            {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'id', name: 'id',visible: false, className: 'hide_me'},
         ],
         "initComplete": function (settings, json) {
           // console.log(json);
@@ -71,15 +72,15 @@ $(document).ready(function () {
     afterDeleteSuccess = function (response) {                    
           if(response.success == true && response.status_code == '1') 
           {
-              toastr["success"]("{!! trans('admin.grievance_delete_success_msg') !!}", "{!! trans('admin.success') !!}");
+              toastr["success"]("{!! trans('admin.location_delete_success_msg') !!}", "{!! trans('admin.success') !!}");
           }
           else if(response.success == false && response.status_code == '2')
           {
-              toastr["error"]("{!! trans('admin.grievance_delete_error_msg') !!}", "{!! trans('admin.error') !!}");
+              toastr["error"]("{!! trans('admin.location_delete_error_msg') !!}", "{!! trans('admin.error') !!}");
           }
           else
           {
-              toastr["success"]("{!! trans('admin.grievance_delete_success_msg') !!}", "{!! trans('admin.success') !!}");
+              toastr["success"]("{!! trans('admin.locatione_delete_success_msg') !!}", "{!! trans('admin.success') !!}");
               //toastr["error"](response.error, "{!! trans('admin.error') !!}");
           }
           

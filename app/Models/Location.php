@@ -50,10 +50,11 @@ class Location extends Authenticatable
         return Validator::make($data, [
             'branch_name' => 'required|max:255',
             'address_line_1' => 'required|max:255',
+            'address_line_2' => 'required|max:255',
             'city' => 'required|max:255',
             'postal_code' => 'required|max:255',
             'state_id' => 'required|max:255',
-            'notes' => 'required|max:255',
+            'status' => 'required|max:255',
             //'section_id' => 'required'
             /*'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users' . ($id != '' ? ',email,'.$id : ''),
