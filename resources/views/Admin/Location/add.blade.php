@@ -88,7 +88,7 @@ Admin | Location
                                         <div class="form-group {{ $errors->has('address_line_1') ? 'has-error' : '' }}">
                                             <label>Address Line 1<span class="text-danger">*</span></label>
                                             <textarea  required class="form-control" name="address_line_1" rows="2">{{ old('address_line_1') }}</textarea>
-                                             <span class="text-danger">{{ $errors->first('address_line_1') }}</span>
+                                            <span class="text-danger">{{ $errors->first('address_line_1') }}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
