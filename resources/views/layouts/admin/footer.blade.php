@@ -7,8 +7,4 @@
              {{--Version 1.0.0--}}
         {{--</span>--}}
 
-        <script type="text/javascript">
-            $("#msg_div").fadeOut(10000);  
-        </script>
-
 </footer>
