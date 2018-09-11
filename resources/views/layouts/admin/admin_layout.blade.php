@@ -35,7 +35,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="{{ asset('plugins/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
 
-    
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}" />
      <!-- Datatables -->
     <link href="{{ asset('plugins/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
@@ -177,7 +177,7 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('js/custom.min.js') }}"></script>
-
+<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 
 <script src="{{ asset('plugins/toastr/build/toastr.min.js') }}"></script>
 <script type="text/javascript">
@@ -189,7 +189,7 @@
     $('.dataTable').DataTable();
 </script>
 <script>
-
+    $("#msg_div").fadeOut(4000);
     $(document).ready(function(){
         toastr.options = {
             closeButton: true,
@@ -208,7 +208,41 @@
         $('.childUl li.active').parent().closest('li').addClass('active');
         $('.childUl li.active').parent().addClass('in');
     });
-    setInterval(function(){ $('#demo-star').toggleClass('text-success'); }, 300)
+    setInterval(function(){ $('#demo-star').toggleClass('text-success'); }, 300);
+
+    $(document).ready(function () {
+
+        $(document).on("click", ".btn-delete", function (e) {
+            $url = $(this).attr('href');
+            $id = $(this).data('id');
+            alert(url);
+            return false;
+            e.preventDefault();
+            swal({
+                    title: "Are you sure you wish to perform this action?",
+                    text: "Your will not be able to recover this Record!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!"
+                },
+                function () {
+                    $.ajax({
+                        url: $url,
+                        type: 'POST',  // Destroy records
+                        dataType: 'json',
+                        data: {_token: csrfToken, _method: 'delete'},
+                        success: function (response) {
+                            afterDeleteSuccess(response)
+                        },
+                        error: function () {
+                            afterDeleteError();
+                        }
+                    });
+                });
+        });
+
+    })
 </script>
 @yield('footer_script')
 

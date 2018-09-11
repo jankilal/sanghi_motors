@@ -38,14 +38,14 @@ Admin | Location
                                     <div class="col-md-6 ">
                                         <div class="form-group {{ $errors->has('branch_name') ? 'has-error' : '' }}">
                                             <label>Brance Name<span class="text-danger">*</span></label>
-                                            <input required type="text" class="form-control" name="branch_name" id="branch_name" value="{{ old('branch_name') }}">
+                                            {{Form::text('branch_name',old('branch_name', ''),['class' => 'form-control required','placeholder'=>'Brance Name'])}}
                                             <span class="text-danger">{{ $errors->first('branch_name') }}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group {{ $errors->has('city') ? 'has-error' : '' }}">
                                             <label>City<span class="text-danger">*</span></label>
-                                            <input required type="text" class="form-control" name="city" id="city" value="{{ old('city') }}">
+                                            {{Form::text('city',old('city', ''),['class' => 'form-control required','placeholder'=>'City Name'])}}
                                             <span class="text-danger">{{ $errors->first('city') }}</span>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@ Admin | Location
                                     <div class="col-md-6">
                                         <div class="form-group {{ $errors->has('postal_code') ? 'has-error' : '' }}">
                                             <label>Postal Code<span class="text-danger">*</span></label>
-                                            <input required type="text" class="form-control" name="postal_code" id="postal_code" value="{{ old('postal_code') }}">
+                                            {{Form::text('postal_code',old('postal_code', ''),['class' => 'form-control required','placeholder'=>'Postal Code'])}}
                                             <span class="text-danger">{{ $errors->first('postal_code') }}</span>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@ Admin | Location
                                         <div class="form-group {{ $errors->has('address_line_1') ? 'has-error' : '' }}">
                                             <label>Address Line 1<span class="text-danger">*</span></label>
                                             <textarea  required class="form-control" name="address_line_1" rows="2">{{ old('address_line_1') }}</textarea>
-                                             <span class="text-danger">{{ $errors->first('address_line_1') }}</span>
+                                            <span class="text-danger">{{ $errors->first('address_line_1') }}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

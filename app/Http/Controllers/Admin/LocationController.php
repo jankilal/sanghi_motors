@@ -43,7 +43,7 @@ class LocationController extends Controller
             ->addColumn('action', function ($loct) {
                 $btnStr = '';
                 $btnStr .= '<a  href="'. route('location.edit',array($loct->id)) . '" data-id="'. $loct->id . '" class="btn btn-xs btn-primary btn-edit"><i class="fa fa-pencil-square-o"></i> Edit</a>';
-                $btnStr .= '<a  href="'. route('location.destroy',array($loct->id)) . '" data-id="'. $loct->id . '" class="btn btn-xs btn-danger btn-delete"><i class="fa fa-trash"></i> Delete</a>';
+               // $btnStr .= '<a onclick="return myFunction();" href="'. route('location.destroy',array($loct->id)) . '" data-id="'. $loct->id . '" class="btn btn-xs btn-danger btn-delete"><i class="fa fa-trash"></i> Delete</a>';
                 return $btnStr;
             })
             ->make(true);
@@ -79,8 +79,9 @@ class LocationController extends Controller
             $location->added_by = $user->id;
             $location->status = $request->get("status",'');
             $location->save();
-            $message = trans('admin.location_'.($id == '' ? 'add' : 'edit').'_success_msg');
-            return redirect(action('Admin\LocationController@index'))->with('success', $message);
+            $message = 'Location successfully'.($id == '' ? ' added' : ' updated');
+            \Session::flash('flash_message',$message);
+            return redirect(action('Admin\LocationController@index'));
         }catch(\Exception $ex){
 
            //LogActivity::addToLog(trans('admin.location_'.($id == '' ? 'create' : 'edit').'_error_log').$ex->getMessage());
@@ -104,11 +105,10 @@ class LocationController extends Controller
 
     public function destroy($id)
     {
-        alert($id);return false;
         try {
             $location = Location::findOrFail($id);
             $location->delete();
-             return response()->json(['success' => true, 'status_code' => '1']);
+            return response()->json(['success' => true, 'status_code' => '1']);
         } catch (\Exception $ex) {
             return response()->json(['error' => $ex->getMessage(), 'success' => false, 'status_code' => '0']);
         }
