@@ -26,7 +26,7 @@ return array (
             'title' => "Line Of Business",
             'permission' => "lobusiness",
             'common_route' => "admin/lobusiness*",
-            'icon' => 'fa fa-users',
+            'icon' => 'fa fa-building',
             'options' => array (
                 'action' => "Admin\LOBusinessController@index"
             ),
@@ -36,9 +36,29 @@ return array (
             'title' => "Designation",
             'permission' => "designation",
             'common_route' => "admin/designation*",
-            'icon' => 'fa fa-users',
+            'icon' => 'fa fa-cog',
             'options' => array (
                 'action' => "Admin\DesignationController@index"
+            ),
+            'url' => ''
+        ),
+        // array (
+        //     'title' => "Designation Approval",
+        //     'permission' => "designationapproval",
+        //     'common_route' => "admin/designationapproval*",
+        //     'icon' => 'fa fa-users',
+        //     'options' => array (
+        //         'action' => "Admin\DesignationApprovalController@index"
+        //     ),
+        //     'url' => ''
+        // ),
+        array (
+            'title' => "Model",
+            'permission' => "model",
+            'common_route' => "admin/model*",
+            'icon' => 'fa fa-cog',
+            'options' => array (
+                'action' => "Admin\ModelController@index"
             ),
             'url' => ''
         ),

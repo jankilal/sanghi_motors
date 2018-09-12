@@ -44,4 +44,14 @@ Route::group(['prefix' => 'admin'], function()
 	Route::get('/designation', 'Admin\DesignationController@index')->name('designation');
 	Route::get('/load-designation-data', 'Admin\DesignationController@loadDesignationData')->name('load-designation-data');
 	Route::resource('designation', 'Admin\DesignationController');
+
+	//Designation Approval
+	// Route::get('/designationapproval', 'Admin\DesignationApprovalController@index')->name('designationapproval');
+	// Route::get('/load-designationapproval-data', 'Admin\DesignationApprovalController@loadDesignationApprovalData')->name('load-designationapproval-data');
+	// Route::resource('designationapproval', 'Admin\DesignationApprovalController');
+
+	//Model
+	Route::get('/model', 'Admin\ModelController@index')->name('model');
+	Route::get('/load-model-data', 'Admin\ModelController@loadModelData')->name('load-model-data');
+	Route::resource('model', 'Admin\ModelController');
 });
